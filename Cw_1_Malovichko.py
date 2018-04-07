@@ -9,7 +9,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', help='Number of nucleotides cut from the end of the sequence', metavar = 'Int', type = int, default=0)
     parser.add_argument('-swl', help='Sliding window length', metavar = 'Int', type = int, default = 0)
     parser.add_argument('-swq', help='Sliding window phred33 quality baseline', metavar = 'Int', type = int, default = 0)
-    parser.add_argument('-o', help='Output fastq file', metavar='Str', type=str)
+    parser.add_argument('-o', help='Output fastq file', nargs='?', metavar='Str', type=str, default=None)
     args = parser.parse_args()
     inp = args.i
     outp = args.o
@@ -40,13 +40,13 @@ def SLIDING_WINDOW(read, length, baseline):
 def trimming(file, output):
     list = []
     for record in SeqIO.parse(file, 'fastq'):
-        a = CROP(record, head)
-        if not (a is None):
-            b = HEADCROP(a, crop)
-            if (not b is None):
-                c = SLIDING_WINDOW(b, length, qual)
-                if not (c is None) and len(c.seq) > 10:
-                    list.append(c)
-    SeqIO.write(list, output, 'fastq')
+        c = SLIDING_WINDOW(HEADCROP(CROP(record, head), crop), length, qual)
+        if not (c is None) and len(c) > 10:
+            if outp == None:
+                print(c.format('fastq'))
+            else:
+                list.append(c)
+        if outp != None:    
+            SeqIO.write(list, output, 'fastq')
 
 trimming(inp, outp)
