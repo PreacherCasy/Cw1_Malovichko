@@ -28,7 +28,7 @@ A CROP imitation triggered by **-c** flag value. Requires two arguments: a SeqIO
 ### SLIDINGWINDOW
 A function for sliding window performance. Requires three arguments: a SeqIO object (*read*), size of the window provided by **-swl** argument (*length*) and sequence quality baseline provided by **-swq** argument )=(*baseline*). Performs CROP function once average quality falls below the baseline. Returns a formatted SeqIO object (*read*).
 
-##trimming
+## trimming
 Sequentially performs three aforementioned functions over every read, examines it whether its length is larger than 10 and either returns it to stdout or adds to list for further infile writing. Requires 
 
 ## Example
