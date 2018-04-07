@@ -37,7 +37,7 @@ def SLIDING_WINDOW(read, length, baseline):
             new_read = CROP(read, start)
             return new_read
 
-def trimming(file, output):
+def trimming(file):
     list = []
     for record in SeqIO.parse(file, 'fastq'):
         c = SLIDING_WINDOW(HEADCROP(CROP(record, head), crop), length, qual)
@@ -46,7 +46,7 @@ def trimming(file, output):
                 print(c.format('fastq'))
             else:
                 list.append(c)
-        if outp != None:    
-            SeqIO.write(list, output, 'fastq')
+    if outp != None:    
+        SeqIO.write(list, output, 'fastq')
 
-trimming(inp, outp)
+trimming(inp)
