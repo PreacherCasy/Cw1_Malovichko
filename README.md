@@ -34,5 +34,7 @@ Sequentially performs three aforementioned functions over every read, examines i
 
 ## Example
 Two tests with to different read files were performed with the following command:
+```bash
 python Cw_1_Malovichko.py -i ~/Downloads/test_classwork{number}.fastq -he 3 -c 3 -swl 4 -swq 30 -o ~/Downloads/output_test{number}.fastq
+```
 An HTML FastQC report for all four files is stored at this repository.
