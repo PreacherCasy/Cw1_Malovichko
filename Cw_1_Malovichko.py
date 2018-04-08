@@ -21,7 +21,7 @@ if __name__ == '__main__':
 def HEADCROP(read, drop_value):
 #    new_seq, new_an = read.seq[drop_value - 1:], {'phred_quality': read.letter_annotations['phred_quality'][drop_value - 1:]}
 #    new_read = SeqIO.SeqRecord(seq=new_seq, letter_annotations=new_an, id=read.id, features=read.features)
-#hre and hereafter we will use a simpler variant
+#hereafter we will use a simpler variant
     new_read = read[drop_value - 1:]
     return new_read
 
