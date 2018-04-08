@@ -5,7 +5,7 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Custom fastq trimmer for Illumina-Sanger')
     parser.add_argument('-i', help='Input fastq file', metavar='Str', type=str)
-    parser.add_argument('-he', help='Number of nucleotides cut from the beginning og the read', metavar = 'Int', type = int, default=0)
+    parser.add_argument('-he', help='Number of nucleotides cut from the beginning of the read', metavar = 'Int', type = int, default=0)
     parser.add_argument('-c', help='Number of nucleotides cut from the end of the sequence', metavar = 'Int', type = int, default=0)
     parser.add_argument('-swl', help='Sliding window length', metavar = 'Int', type = int, default = 0)
     parser.add_argument('-swq', help='Sliding window phred33 quality baseline', metavar = 'Int', type = int, default = 0)
